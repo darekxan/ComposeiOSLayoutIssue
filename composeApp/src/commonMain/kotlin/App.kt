@@ -20,7 +20,8 @@ fun App() {
     MaterialTheme {
         var greeting by remember { mutableStateOf(Greeting().greet()) }
         Column(
-            Modifier.fillMaxWidth()
+            Modifier
+                .fillMaxWidth()
                 .background(Color.Green),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
