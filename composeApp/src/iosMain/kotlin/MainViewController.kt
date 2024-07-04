@@ -2,7 +2,7 @@ import androidx.compose.runtime.ExperimentalComposeApi
 import androidx.compose.ui.window.ComposeUIViewController
 
 @ExperimentalComposeApi
-fun MainViewController(onSizeChanged: ((Int) -> Unit)?) =
+fun MainViewController() =
     ComposeUIViewController(configure = {
         opaque = false
-    }) { App(onSizeChanged = onSizeChanged) }
+    }) { App() }

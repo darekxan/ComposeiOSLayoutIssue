@@ -13,9 +13,7 @@ import ComposeApp
 
 class ViewController: UIViewController {
     
-    var heightConstraint: NSLayoutConstraint? = nil
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,16 +23,8 @@ class ViewController: UIViewController {
         view.addSubview(label) // Add label to the main view
         view.backgroundColor = .red
 
-//        var kotlinViewController
-        let kotlinViewController = MainViewControllerKt.MainViewController { [self] height in
-            heightConstraint?.constant = CGFloat(height)/2.5
-            print(CGFloat(height)/2.5)
-            self.view.layoutIfNeeded()
-        }
+        let kotlinViewController = MainViewControllerKt.MainViewController()
         kotlinViewController.view.backgroundColor = UIColor.blue
-        
-        heightConstraint = kotlinViewController.view.heightAnchor.constraint(equalToConstant: 50)
-        heightConstraint?.priority = UILayoutPriority(249) //
 
         
         addChild(kotlinViewController)
@@ -47,18 +37,12 @@ class ViewController: UIViewController {
                // Safe Area Constraints
                let safeArea = view.safeAreaLayoutGuide
         
-//        kotlinViewController.view.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .vertical)
-//        kotlinViewController.view.setContentCompressionResistancePriority(UILayoutPriority.defaultLow, for: .vertical)
                NSLayoutConstraint.activate([
                    kotlinViewController.view.topAnchor.constraint(equalTo: safeArea.topAnchor),
                    kotlinViewController.view.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
                    kotlinViewController.view.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-                   heightConstraint!,
-//                   kotlinViewController.view.heightAnchor.constraint(equalToConstant: 200).priority = .defaultLow
-                   kotlinViewController.view.bottomAnchor.constraint(lessThanOrEqualTo: safeArea.bottomAnchor)
-//                   kotlinViewController.view.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -)
+                   kotlinViewController.view.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
                ])
         
-        // Add layout constraints to position the label...
     }
 }

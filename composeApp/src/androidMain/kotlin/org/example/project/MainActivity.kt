@@ -16,7 +16,7 @@ class MainActivity : ComponentActivity() {
             App()
         }
         val findViewById = findViewById<ViewGroup>(android.R.id.content)
-        findViewById.setBackgroundColor(getColor(android.R.color.holo_blue_bright))
+        findViewById.setBackgroundColor(getColor(android.R.color.holo_blue_dark))
     }
 }
 
